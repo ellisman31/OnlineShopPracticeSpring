@@ -23,7 +23,7 @@ public class UserRoleServiceController {
 
     @PostMapping("/createUserRole")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUserRole(UserRole userRole) {
+    public void createUserRole(@RequestBody UserRole userRole) {
         userRoleService.createUserRole(userRole);
     }
 }

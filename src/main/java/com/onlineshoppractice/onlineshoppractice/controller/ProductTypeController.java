@@ -23,7 +23,7 @@ public class ProductTypeController {
 
     @PostMapping("/createProductType")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProductType(ProductType productType) {
+    public void createProductType(@RequestBody ProductType productType) {
         productTypeService.createProductType(productType);
     }
 }

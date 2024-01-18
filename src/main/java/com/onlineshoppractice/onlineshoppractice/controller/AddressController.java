@@ -23,7 +23,7 @@ public class AddressController {
 
     @PostMapping("/createAddress")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createAddress(Address address) {
+    public void createAddress(@RequestBody Address address) {
         addressService.createAddress(address);
     }
 }
