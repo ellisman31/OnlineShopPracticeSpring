@@ -15,8 +15,8 @@ public class UserRoleService {
     @Autowired
     private UserRoleRepository userRoleRepository;
 
-    public void createProduct(UserRole userRole) {
-        userRoleRepository.save(userRole);
+    public void createUserRole(UserRole newUserRole) {
+        userRoleRepository.save(newUserRole);
     }
 
     public List<UserRoleDTO> getAllUserRoleDTO() {

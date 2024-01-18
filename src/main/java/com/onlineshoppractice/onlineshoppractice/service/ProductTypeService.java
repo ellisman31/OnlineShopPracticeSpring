@@ -15,8 +15,8 @@ public class ProductTypeService {
     @Autowired
     private ProductTypeRepository productTypeRepository;
 
-    public void createProduct(ProductType productType) {
-        productTypeRepository.save(productType);
+    public void createProductType(ProductType newProductType) {
+        productTypeRepository.save(newProductType);
     }
 
     public List<ProductTypeDTO> getAllProductTypeDTO() {

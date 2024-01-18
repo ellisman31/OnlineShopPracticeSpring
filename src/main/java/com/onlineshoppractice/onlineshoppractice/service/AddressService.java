@@ -16,9 +16,9 @@ public class AddressService {
     @Autowired
     private AddressRepository addressRepository;
 
-    public void createAddress(Address address) {
-        address.setListOfUser(new ArrayList<>());
-        addressRepository.save(address);
+    public void createAddress(Address newAddress) {
+        newAddress.setListOfUser(new ArrayList<>());
+        addressRepository.save(newAddress);
     }
 
     public List<AddressDTO> getAllAddressDTO() {

@@ -19,11 +19,10 @@ public class UserService {
     @Autowired
     private CartService cartService;
 
-    public User createUser(User newUser) {
+    public void createUser(User newUser) {
         newUser.setCart(cartService.createCartForUser(newUser));
         newUser.setRegistrationDate(Util.getCurrentDate());
         userRepository.save(newUser);
-        return newUser;
     }
 
     public List<UserDTO> getAllUserDTO() {
