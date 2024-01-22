@@ -1,9 +1,9 @@
 package com.onlineshoppractice.onlineshoppractice.dto;
 
-import com.onlineshoppractice.onlineshoppractice.model.type.UserRoleType;
+import com.onlineshoppractice.onlineshoppractice.model.type.UserRolePattern;
 import lombok.Data;
 
 @Data
 public class UserRoleDTO {
-    private UserRoleType userRoleType;
+    private UserRolePattern userRolePattern;
 }

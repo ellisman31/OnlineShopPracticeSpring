@@ -1,6 +1,6 @@
 package com.onlineshoppractice.onlineshoppractice.model;
 
-import com.onlineshoppractice.onlineshoppractice.model.type.UserRoleType;
+import com.onlineshoppractice.onlineshoppractice.model.type.UserRolePattern;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,13 +12,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "online_shop_user_role_type")
 public class UserRole {
-    @Id
-    @GeneratedValue
+
+    @Id @GeneratedValue
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "online_shop_user_role")
-    private UserRoleType onlineShopUserRole;
+    @Enumerated(EnumType.STRING)
+    private UserRolePattern onlineShopUserRole;
 
     @OneToOne(mappedBy = "userRole")
     private User user;

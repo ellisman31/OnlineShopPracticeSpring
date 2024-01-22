@@ -1,6 +1,6 @@
 package com.onlineshoppractice.onlineshoppractice.model.type;
 
-public enum UserRoleType {
+public enum UserRolePattern {
     MEMBER,
     ADMIN
 }

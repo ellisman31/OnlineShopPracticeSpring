@@ -3,17 +3,18 @@ package com.onlineshoppractice.onlineshoppractice.controller;
 import com.onlineshoppractice.onlineshoppractice.dto.UserRoleDTO;
 import com.onlineshoppractice.onlineshoppractice.model.UserRole;
 import com.onlineshoppractice.onlineshoppractice.service.UserRoleService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/api")
+@RestController
+@RequestMapping("/api")
+@RequiredArgsConstructor
 public class UserRoleServiceController {
 
-    @Autowired
-    private UserRoleService userRoleService;
+    private final UserRoleService userRoleService;
 
     @GetMapping("/getAllUserRole")
     @ResponseBody
