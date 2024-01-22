@@ -2,18 +2,20 @@ package com.onlineshoppractice.onlineshoppractice.controller;
 
 import com.onlineshoppractice.onlineshoppractice.dto.CartDTO;
 import com.onlineshoppractice.onlineshoppractice.service.CartService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController("/api")
+@RestController
+@RequestMapping("/api")
+@RequiredArgsConstructor
 public class CartController {
 
-    @Autowired
-    private CartService cartService;
+    private final CartService cartService;
 
     @GetMapping("/getAllCart")
     @ResponseBody

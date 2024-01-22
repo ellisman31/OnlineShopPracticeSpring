@@ -5,7 +5,8 @@ import com.onlineshoppractice.onlineshoppractice.model.Cart;
 import com.onlineshoppractice.onlineshoppractice.model.Product;
 import com.onlineshoppractice.onlineshoppractice.model.User;
 import com.onlineshoppractice.onlineshoppractice.repository.CartRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.onlineshoppractice.onlineshoppractice.service.serviceinterface.CartServiceInterface;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,12 +14,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CartService {
+@RequiredArgsConstructor
+public class CartService implements CartServiceInterface {
 
-    @Autowired
-    private CartRepository cartRepository;
+    private final CartRepository cartRepository;
+    private final ProductService productService;
 
-    //It would be not necessary to create request in the Controller for Cart creation.
     public Cart createCartForUser(User assignedUser) {
         if (assignedUser != null) {
             Cart newCart = new Cart(assignedUser, new ArrayList<>());
@@ -33,6 +34,17 @@ public class CartService {
                 .stream()
                 .map(this::converToCartDTO)
                 .collect(Collectors.toList());
+    }
+
+    public List<Cart> getAllCart() {
+        return cartRepository.findAll();
+    }
+
+    public void removeCart(Cart removeCart) {
+        for (Product product : removeCart.getListOfProduct()) {
+            productService.addProduct(product);
+        }
+        cartRepository.delete(removeCart);
     }
 
     private CartDTO converToCartDTO(Cart cart) {
