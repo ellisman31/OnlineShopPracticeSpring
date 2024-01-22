@@ -11,4 +11,6 @@ public class ProductDTO {
     private BigDecimal productPrice;
     private ProductType productType;
     private String productDescription;
+    private int productAmount;
+    private Boolean productAvailability;
 }

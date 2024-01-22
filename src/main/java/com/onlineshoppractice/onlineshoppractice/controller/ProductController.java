@@ -3,17 +3,18 @@ package com.onlineshoppractice.onlineshoppractice.controller;
 import com.onlineshoppractice.onlineshoppractice.dto.ProductDTO;
 import com.onlineshoppractice.onlineshoppractice.model.Product;
 import com.onlineshoppractice.onlineshoppractice.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/api")
+@RestController
+@RequestMapping("/api")
+@RequiredArgsConstructor
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
 
     @GetMapping("/getAllProduct")
     @ResponseBody
