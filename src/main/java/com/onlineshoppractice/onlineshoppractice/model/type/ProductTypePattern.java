@@ -1,6 +1,6 @@
 package com.onlineshoppractice.onlineshoppractice.model.type;
 
-public enum ProductType {
+public enum ProductTypePattern {
     OTHER,
     FOOD,
     BEVERAGE,
