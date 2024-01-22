@@ -3,17 +3,18 @@ package com.onlineshoppractice.onlineshoppractice.controller;
 import com.onlineshoppractice.onlineshoppractice.dto.AddressDTO;
 import com.onlineshoppractice.onlineshoppractice.model.Address;
 import com.onlineshoppractice.onlineshoppractice.service.AddressService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/api")
+@RestController
+@RequestMapping("/api")
+@RequiredArgsConstructor
 public class AddressController {
 
-    @Autowired
-    private AddressService addressService;
+    private final AddressService addressService;
 
     @GetMapping("/getAllAddress")
     @ResponseBody
