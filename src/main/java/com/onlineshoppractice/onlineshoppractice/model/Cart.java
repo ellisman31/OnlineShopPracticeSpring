@@ -1,7 +1,8 @@
 package com.onlineshoppractice.onlineshoppractice.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Data
 @AllArgsConstructor
@@ -21,11 +23,11 @@ public class Cart {
     private Long id;
 
     @OneToOne(mappedBy = "cart")
-    @JsonIgnore
+    @JsonBackReference
     private User user;
 
     @OneToMany(mappedBy = "cart")
-    @JsonBackReference
+    @JsonManagedReference
     private List<Product> listOfProduct;
 
     public Cart(User user, List<Product> listOfProduct) {

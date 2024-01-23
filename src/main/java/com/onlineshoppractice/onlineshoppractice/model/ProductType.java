@@ -1,5 +1,7 @@
 package com.onlineshoppractice.onlineshoppractice.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.onlineshoppractice.onlineshoppractice.model.type.ProductTypePattern;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,5 +24,6 @@ public class ProductType {
     private ProductTypePattern productTypePattern;
 
     @OneToOne(mappedBy = "productType")
+    @JsonBackReference
     private Product product;
 }

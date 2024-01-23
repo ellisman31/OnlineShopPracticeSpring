@@ -1,11 +1,14 @@
 package com.onlineshoppractice.onlineshoppractice.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.onlineshoppractice.onlineshoppractice.model.type.UserRolePattern;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Data
 @AllArgsConstructor
@@ -22,5 +25,6 @@ public class UserRole {
     private UserRolePattern onlineShopUserRole;
 
     @OneToOne(mappedBy = "userRole")
+    @JsonBackReference
     private User user;
 }

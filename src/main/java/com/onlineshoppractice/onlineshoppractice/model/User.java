@@ -1,5 +1,6 @@
 package com.onlineshoppractice.onlineshoppractice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Data
 @AllArgsConstructor
@@ -35,10 +37,12 @@ public class User {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "onlineShopUserRoleId", referencedColumnName = "id", nullable = false)
+    @JsonManagedReference
     private UserRole userRole;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "onlineShopCartId", referencedColumnName = "id", nullable = false)
+    @JsonManagedReference
     private Cart cart;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

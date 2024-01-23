@@ -1,6 +1,8 @@
 package com.onlineshoppractice.onlineshoppractice.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Data
 @AllArgsConstructor
@@ -27,6 +30,7 @@ public class Product {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "productTypeId", referencedColumnName = "id", nullable = false)
+    @JsonManagedReference
     private ProductType productType;
 
     @Column(name = "product_description", length = 255)
@@ -40,12 +44,12 @@ public class Product {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "onlineShopCartId", referencedColumnName = "id")
-    @JsonBackReference
+    @JsonIgnore
     private Cart cart;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "onlineShopInventoryId", referencedColumnName = "id")
-    @JsonBackReference
+    @JsonIgnore
     private Inventory inventory;
 
     public Product(String productName, BigDecimal productPrice, ProductType productType, String productDescription, int productAmount) {
